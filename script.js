@@ -10,11 +10,6 @@ function getComputerChoice() {
     return gameChoice;
 }  
 
-// console.log(getComputerChoice());
-// let playerSelection = prompt('Choose between Rock, Paper, Scissors');
-// playerSelection = playerSelection.toLowerCase()
-// alert(`You choosed ${playerSelection} `);
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection){
         resultRound = "Draw";
@@ -33,7 +28,41 @@ function playRound(playerSelection, computerSelection) {
     }
     return resultRound
 }
-   
-const playerSelection = "paper";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        playerSelection = prompt('Choose between Rock, Paper, Scissors!');
+        playerSelection = playerSelection.toLowerCase();
+        computerSelection = getComputerChoice();
+        console.log(`Player selection: ${playerSelection}`)
+        console.log(`Computer selection: ${computerSelection}`)
+        resultR = playRound(playerSelection, computerSelection);    
+        if (resultR == "Draw"){
+            playerScore += 0;
+            computerScore += 0;
+        } else if (resultR == "You win! Rock beats Scissors" || resultR == "You win! Paper beats Rock" || resultR == "You win! Scissors beats Paper"){
+            playerScore += 1;
+        } else {
+            computerScore += 1;
+        }
+        console.log(resultR)
+        console.log(`Score: - Player=${playerScore} - Computer=${computerScore}`)
+    }
+    if (playerScore > computerScore){
+        console.log(`You Win! Score: - Player=${playerScore} - Computer=${computerScore}`);
+    } else if (playerScore < computerScore){
+        console.log(`You Lose! Score: - Player=${playerScore} - Computer=${computerScore}`);
+    } else {
+        console.log (`Draw! Score: - Player=${playerScore} - Computer=${computerScore}`);
+    }
+}
+
+// const playerSelection = "paper";
+// const computerSelection = getComputerChoice();
+// console.log(playRound(playerSelection, computerSelection));
+
+game();
+
+
